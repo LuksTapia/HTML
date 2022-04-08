@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ejercicio de numeros</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    
+    
+</head>
+<body style="background-color: grey;"> 
+    <h1 style="color: white;">EL juego de mostrar los numeros</h1>
+
+    <div style="border-color: white; border-style: solid; width: 40%; margin: auto; padding: 10px; text-align: center;" ><h2 style="color: white;"
+        ><u>Instrucciones</u></h2>
+        <p style="color: white;"> Apreta comenzar para generar un número random. <br> De acuerdo a ese número, 
+            hay que adivinar si el que sigue es mayor o menor. <br> Si lo es, seguís jugando</p></div>
+
+
+
+
+    <button onclick="Empezar()">Comenzar</button>
+    <label id = "hola"></label>
+    <hr>
+    <button id = "boton" onclick="EsMayor()"> MAYOR</button>
+    <button id = "boton2" onclick="EsMenor()">MENOR </button>
+    <hr>
+    <label id = "lblMje" style="color: white;">Empezar</label>
+    <hr>
+    <label id = "lblContador" style="color: white;">Puntaje</label>
+    
+    
+    
+    
+    <script>
+
+        var puntaje;
+
+        var numeroInicial = 0;
+        noPuede();
+    
+    function Empezar() {
+        puntaje = 0;
+        numeroInicial = GetRandomInt(1, 10);
+        document.getElementById("lblMje").innerHTML = "Primer número: " + numeroInicial;
+        document.getElementById("lblContador").innerHTML = "Puntaje = " + puntaje;
+        console.log("El numero inicial es: " + numeroInicial);
+        puede();
+            
+        }
+
+    function puede() {
+        document.getElementById("boton").disabled = false;
+        document.getElementById("boton2").disabled = false;
+
+    }
+
+    function noPuede() {
+        document.getElementById("boton").disabled = true;
+        document.getElementById("boton2").disabled = true;
+
+
+    }
+
+    function EsMayor() {
+        var numeroNuevo = GetRandomInt(1, 10);
+        if(numeroNuevo >= numeroInicial) {
+            puntaje ++;
+            document.getElementById("lblMje").innerHTML = "Numero actual: " + numeroNuevo;
+            document.getElementById("lblContador").innerHTML = "Puntaje = " + puntaje;
+            numeroInicial = numeroNuevo;
+
+        } else {
+
+            document.getElementById("lblMje").innerHTML = "Tenías " + numeroInicial + " y salió " + numeroNuevo;
+            noPuede();
+
+
+        }
+
+
+            console.log("TocoMayor");
+        }
+
+    function EsMenor() {
+
+        var numeroNuevo = GetRandomInt(1, 10);
+        if(numeroNuevo <= numeroInicial) {
+            puntaje ++;
+            document.getElementById("lblMje").innerHTML = "Numero actual " + numeroNuevo;
+            document.getElementById("lblContador").innerHTML = "Puntaje = " + puntaje;
+            numeroInicial = numeroNuevo;
+
+        } else {
+            document.getElementById("lblMje").innerHTML = "Tenías " + numeroInicial + " y salió " + numeroNuevo;
+            noPuede();
+
+            
+        }
+            console.log("TocoMenor")
+        }
+    
+    function GetRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+    
+    
+        </script>
+    
+
+
+
+
+
+    
+</body>
+</html>
